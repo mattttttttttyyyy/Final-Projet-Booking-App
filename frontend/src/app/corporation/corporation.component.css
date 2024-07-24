@@ -1,0 +1,62 @@
+.container {
+  width: 90%;
+  padding-top: 10vh;
+}
+
+.corporation-container {
+  background-color: rgba(15, 15, 15, 0.3);
+  padding: 10%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.corporation-container .form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10%;
+}
+
+.corporation-container h1 {
+  text-align: center;
+}
+
+.corporation-container button {
+  align-self: center;
+}
+
+.button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+.custom-button {
+  background-color: #242424;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-button:hover {
+  background-color: rgba(80, 80, 80, 0.8);
+}
+
+.corporation-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 5%;
+}

@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="corporation-container rounded shadow">
+    <form (ngSubmit)="createCorporationComponent()" class="text-center">
+      <div class="form-group">
+        <label for="corporationName"
+          ><h1 class="corporation-title">Add corporation</h1></label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="corporationName"
+          [(ngModel)]="corporation.name"
+          name="corporationName"
+          placeholder="Name"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-light custom-button">Add</button>
+    </form>
+  </div>
+</div>
+
+<!-- <div class="row">
+  <h5 class="text-danger">{{ errorMessage }}</h5>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <p>List of corporations</p>
+
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let corporation of corporations">
+          <td>{{ corporation.id }}</td>
+          <td>{{ corporation.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div> -->

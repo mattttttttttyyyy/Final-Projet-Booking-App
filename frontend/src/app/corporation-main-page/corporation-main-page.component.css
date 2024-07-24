@@ -1,0 +1,33 @@
+.corporation-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1%;
+  gap: 10px; /* Add gap between elements */
+  padding-bottom: 20px;
+}
+
+.corporation-header h1 {
+  text-align: center;
+  margin-bottom: 0; /* Adjust margin as needed */
+}
+
+.custom-button {
+  background-color: #242424;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-button:hover {
+  background-color: #555555;
+}
+
+input[type="text"] {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}

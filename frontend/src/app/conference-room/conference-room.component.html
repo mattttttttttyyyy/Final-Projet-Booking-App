@@ -1,0 +1,150 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="createRoomClass">
+        <button
+          type="button"
+          class="btn btn-primary custom-button"
+          (click)="collapse.toggle()"
+          [attr.aria-expanded]="!isCollapsed"
+          aria-controls="collapseExample"
+        >
+          Add new room
+        </button>
+      </div>
+
+      <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <div class="form-group">
+          <form (ngSubmit)="createConferenceRoom()">
+            <label for="conferenceRoomName" style="color: white"></label>
+            <div>
+              <input
+                type="text"
+                class="form-control"
+                id="conferenceRoomName"
+                [(ngModel)]="conferenceRoom.name"
+                name="conferenceRoomName"
+                required
+                style="color: rgb(30, 30, 30)"
+              />
+              <label for="conferenceRoomLevel" style="color: white"
+                >Level (1-10):</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="conferenceRoomLevel"
+                [(ngModel)]="conferenceRoom.level"
+                name="conferenceRoomLevel"
+                required
+                min="1"
+                max="10"
+                style="color: rgb(30, 30, 30)"
+              />
+              <label for="conferenceRoomSitting" style="color: white"
+                >Sitting:</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="conferenceRoomSitting"
+                [(ngModel)]="conferenceRoom.sittingNumber"
+                name="conferenceRoomSitting"
+                required
+                style="color: rgb(30, 30, 30)"
+              />
+              <label for="conferenceRoomStanding" style="color: white"
+                >Standing:</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="conferenceRoomStanding"
+                [(ngModel)]="conferenceRoom.standingNumber"
+                name="conferenceRoomStanding"
+                required
+                style="color: rgb(30, 30, 30)"
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary custom-button">
+              Add
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="conference-rooms">
+        <h3 style="color: white">Conference Rooms:</h3>
+        <div *ngIf="conferenceRooms.length > 0">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th style="color: white">Room:</th>
+                <th style="color: white">Actions:</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let room of conferenceRooms">
+                <td style="color: white">
+                  <h2>{{ room.name }}</h2>
+                  Level: {{ room.level }}, sitting space:
+                  {{ room.sittingNumber }}, standing space:
+                  {{ room.standingNumber }}
+                </td>
+                <td>
+                  <div class="action-buttons">
+                    <button
+                      class="btn btn-primary custom-button"
+                      (click)="onRoomSelected(room.id)"
+                    >
+                      Select
+                    </button>
+                    <button
+                      class="delete-button"
+                      (click)="deleteConferenceRoom(room.id)"
+                    >
+                      X
+                    </button>
+                    <button
+                      class="btn btn-primary custom-button"
+                      (click)="openTextField(room)"
+                    >
+                      <img
+                        src="assets/pen.png"
+                        alt="Change Name"
+                        style="width: 20px; height: 20px; filter: invert(100%)"
+                      />
+                    </button>
+                    <input
+                      *ngIf="isTextFieldOpen && room.id === roomNameToChange"
+                      type="text"
+                      [(ngModel)]="newRoomName"
+                      (keydown.enter)="changeName(newRoomName)"
+                      (keyup.enter)="isTextFieldOpen = false"
+                      autofocus
+                    />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div *ngIf="conferenceRooms.length === 0">
+          <p style="color: white">No conference rooms found.</p>
+        </div>
+        <div *ngIf="errorMessage" style="color: white">
+          {{ errorMessage }}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="date-picker-wrapper">
+        <app-date-picker
+          *ngIf="selectedRoomNumber !== undefined"
+          [roomNumber]="selectedRoomNumber"
+        ></app-date-picker>
+      </div>
+    </div>
+  </div>
+</div>

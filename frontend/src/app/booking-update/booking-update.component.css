@@ -1,0 +1,54 @@
+.custom-button {
+  background-color: #242424;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-button:hover {
+  background-color: #555555;
+}
+
+.date-container {
+  margin-left: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 23%;
+}
+ngb-datepicker ngb-dp-header.bg-dark {
+  color: #eee;
+  background-color: #333;
+}
+
+::ng-deep div.ngb-dp-arrow > button {
+  color: red;
+}
+
+.timepicker-container {
+  margin-left: 15%;
+  margin-bottom: 5%;
+  position: relative;
+  display: inline-block;
+  padding: 20px;
+  background-color: #0000001a;
+}
+
+.invalid-time {
+  outline: 2px solid red;
+  border-radius: 20px;
+}
+
+.select-end-time {
+  margin-bottom: 5px;
+}
+
+.rounded {
+  border-radius: 10px;
+}
+
+.shadow {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}

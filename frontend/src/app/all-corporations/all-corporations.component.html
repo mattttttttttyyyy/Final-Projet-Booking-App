@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="corporation-container">
+    <h1 class="corporation-title">Corporations</h1>
+    <div *ngIf="corporations.length > 0">
+      <div class="corporation-grid">
+        <div class="corporation-row">
+          <div
+            class="corporation-card"
+            *ngFor="let corporation of corporations"
+          >
+            <button
+              class="corporation-button"
+              (click)="onCorporationSelect(corporation.id)"
+            >
+              <span class="corporation-name">{{ corporation.name }}</span>
+            </button>
+            <button
+              class="delete-button"
+              (click)="onDeleteCorporation(corporation.id)"
+            >
+              X
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

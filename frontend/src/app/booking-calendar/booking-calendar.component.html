@@ -1,0 +1,20 @@
+<div class="booking-calendar">
+  <div class="booking-calendar-header">
+    <h3 style="color: white">Bookings for the selected day:</h3>
+  </div>
+  <div class="booking-list">
+    <ul>
+      <ng-container *ngIf="bookings && bookings.length > 0">
+        <li *ngFor="let booking of bookings">
+          <span style="color: white">
+            {{ getFormattedTime(booking.startTime.toString()) }} -
+            {{ getFormattedTime(booking.endTime.toString()) }}
+          </span>
+        </li>
+      </ng-container>
+      <li *ngIf="!bookings || bookings.length === 0">
+        <span style="color: white">No bookings today.</span>
+      </li>
+    </ul>
+  </div>
+</div>

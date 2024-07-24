@@ -1,0 +1,23 @@
+<div *ngIf="corporation">
+  <div class="corporation-header">
+    <h1>{{ corporation.name }}</h1>
+    <div>
+      <button class="custom-button" (click)="openTextField()">
+        Change name
+      </button>
+    </div>
+    <input
+      *ngIf="isTextFieldOpen"
+      type="text"
+      [(ngModel)]="corporation.name"
+      (keydown.enter)="changeName(corporation.name)"
+      (keyup.enter)="isTextFieldOpen = false"
+      autofocus
+    />
+  </div>
+
+  <app-conference-room
+    [corporationId]="corporation.id"
+    (roomSelected)="onRoomSelected($event)"
+  ></app-conference-room>
+</div>

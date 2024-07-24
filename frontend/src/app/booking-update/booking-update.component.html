@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Booking Search</h2>
+      <div class="form-group">
+        <label for="uniqueId">Unique ID:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="uniqueId"
+          [(ngModel)]="uniqueId"
+        />
+      </div>
+      <button
+        class="custom-button"
+        (click)="searchBooking()"
+        [disabled]="uniqueId.length < 5"
+      >
+        Search
+      </button>
+      <div *ngIf="bookingFound">
+        <h3>Booking Details</h3>
+        <p>Date: {{ getFormattedDate(booking.startTime.toString()) }}</p>
+        <p>Start Time: {{ getFormattedTime(booking.startTime.toString()) }}</p>
+        <p>End Time: {{ getFormattedTime(booking.endTime.toString()) }}</p>
+        <p>Unique ID: {{ booking.uniqueId }}</p>
+        <button (click)="editBooking()" class="custom-button">Edit</button>
+        <button (click)="deleteBooking()" class="custom-button">Delete</button>
+      </div>
+      <div *ngIf="searchClicked && !bookingFound && uniqueId.length >= 5">
+        <p>No booking found.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div *ngIf="editBookingYes" class="timepicker-container rounded shadow">
+        <mat-form-field class="rounded">
+          <mat-label>Choose a date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            [min]="minDate"
+            [(ngModel)]="selected"
+            (ngModelChange)="onDateSelect($event)"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker [startAt]="minDate"></mat-datepicker>
+        </mat-form-field>
+
+        <ngb-timepicker
+          [minuteStep]="15"
+          [(ngModel)]="selectedTime"
+          (ngModelChange)="onTimeChange($event)"
+        ></ngb-timepicker>
+
+        <div class="select-end-time">Select end time:</div>
+        <ngb-timepicker
+          [minuteStep]="15"
+          [(ngModel)]="selectedEndTime"
+          (ngModelChange)="onTimeChange($event)"
+          [ngClass]="{ 'invalid-time': !isTimeValid }"
+        ></ngb-timepicker>
+
+        <div *ngIf="!isTimeValid" class="small form-text text-danger">
+          Selected time is before the current time.
+        </div>
+
+        <button (click)="saveDateTime()" class="btn btn-light mt-3">
+          Save
+        </button>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="container">
+        <app-booking-calendar
+          *ngIf="editBookingYes"
+          [bookings]="bookingsForSelectedDay"
+        ></app-booking-calendar>
+      </div>
+    </div>
+  </div>
+</div>

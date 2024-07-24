@@ -1,0 +1,72 @@
+.container {
+  align-self: auto;
+  display: flex;
+  padding-top: 10vh;
+  padding-left: 20%;
+  padding-right: 20%;
+  border-radius: 5%;
+}
+
+.corporation-container {
+  background-color: rgba(15, 15, 15, 0.3);
+  padding: 10%;
+  border-radius: 5%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.corporation-container h1 {
+  text-align: center;
+  font-size: 48px;
+}
+
+.corporation-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.corporation-card {
+  flex-direction: column;
+  width: auto;
+  align-items: center;
+  background-color: #a2a1a176;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+.corporation-name {
+  background-color: rgba(21, 21, 21, 0.2);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.corporation-button {
+  flex-direction: row;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.corporation-button:hover {
+  text-decoration: underline;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 14px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
